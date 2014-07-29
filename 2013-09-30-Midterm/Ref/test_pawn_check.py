@@ -1,0 +1,30 @@
+import unittest
+from testgenDecorator import for_examples
+from set_testresults_file import RESULTS_FILE
+from checkChessCheck import check_check, check_knight_attack, find_kings, check_pawn_attack
+
+class TestChessCheck(unittest.TestCase):
+
+    @for_examples(([['r','n','b','q','.','b','n','r'],
+                    ['p','p','p','p','p','.','.','.'],
+                    ['.','.','.','.','.','.','p','.'],
+                    ['.','.','.','.','.','.','.','k'],
+                    ['.','.','.','.','.','Q','P','p'],
+                    ['.','.','.','.','P','.','.','.'],
+                    ['P','P','P','P','.','P','.','P'],
+                    ['R','N','B','.','K','.','N','R']], (3,7), (7,4), ('k','P', 4, 6)))
+    def test_pawn_check(self, board, black_king, white_king, pawn_check):
+        '''
+        Test for knight checks
+        '''
+        kings = find_kings(board)
+        self.assertEqual(kings['k'], black_king)
+        self.assertEqual(kings['K'], white_king)
+        check = check_check(board)
+        self.assertEqual(check, pawn_check)
+
+if __name__ == "__main__":
+    f = open(RESULTS_FILE, "w")
+    runner = unittest.TextTestRunner(f)
+    unittest.main(testRunner=runner)
+    f.close()

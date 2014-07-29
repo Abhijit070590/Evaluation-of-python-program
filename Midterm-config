@@ -1,0 +1,17 @@
+Title: Midterm
+Date: 2013-09-30
+
+# Problem No Title nFiles nTestModules TotalMarks
+# Problem: 1 RailTimetable 1 1 25
+#    Files: railTimetable.py
+#    Test: test_railTimetable.py 25 
+# Problem: End
+
+Problem: 2 checkChessCheck 1 2 15
+    # Expected submission file names
+    Files: checkChessCheck.py
+    
+    # TestModule Marks FunctionsInvoked
+    Test: test_pawn_check 8 check_pawn_attack
+    Test: test_knight_check 7 check_knight_attack
+Problem: End
